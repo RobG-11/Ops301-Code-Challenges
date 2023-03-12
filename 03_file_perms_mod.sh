@@ -2,7 +2,7 @@
 
 # Script: 03 - File Permissions
 # Author: Robert Gregor
-# Date of latest revision: 120900FMAR23
+# Date of latest revision: 121430FMAR23
 
 # Objectives - Create a new bash script that performs the following:
     # Prompts user for input directory path
