@@ -20,7 +20,8 @@
     # [Bash Scripting – For Loop](https://www.geeksforgeeks.org/bash-scripting-for-loop/)
     # [Nested c-style loops in bash](https://stackoverflow.com/questions/7786342/nested-c-style-loops-in-bash)
     # [Bash Scripting – Write Output of Bash Command into Log File](https://www.geeksforgeeks.org/bash-scripting-write-output-of-bash-command-into-log-file/)
-
+    # [Linux / UNIX: Bash Script Sleep or Delay a Specified Amount of Time](https://www.cyberciti.biz/faq/linux-unix-sleep-bash-scripting/)
+    # 
 
 # Main
 
@@ -78,18 +79,27 @@ exit_func(){
 # Modify Directory Permissions Function:
     # Uses chmod command to modify permissions of all files in selected directory with permissions input provided by user
     # Logs exit timestamp in fpm_log.txt file
-    # Prints updated permissions for files in selected directory
+    # Declares variable ls_l_command equal to output of ls $dir_path -l command
+    # While loop reads each line and does...
+        # Delays two seconds and then prints each line
+        # Redirects contents of ls_l_command variable back into loop
     # Uses "Press space bar to continue..." command to ensure user readability
 
 mod_dir_perms(){
     chmod -R $dir_perms $dir_path
+    echo ""
     echo $(date +%m-%d-%Y-%T) - "Directory Modified / Permissions: $dir_path / $dir_perms">>fpm_log.txt
     echo "-----------------------------------------------------------------------------"
     echo "Files and folders in selected directory with UPDATED permissions listed below"
     echo "-----------------------------------------------------------------------------"
     echo ""
-    ls $dir_path -l
-    
+
+    ls_l_command=$(ls $dir_path -l)
+    while read line; do
+       sleep 1
+       echo $line
+    done <<< "$ls_l_command"
+
     echo ""
     read -n 1 -r -s -p $'Press space bar to continue...\n'
     echo ""
