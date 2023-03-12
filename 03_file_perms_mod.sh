@@ -26,15 +26,20 @@ touch New_Dir/file1.txt
 touch New_Dir/file2.txt
 touch New_Dir/file3.txt
 
-# Each conditional creates a .txt in current working directory and copies selected log content into .txt file
-# Prints time stamped comment declaring action completed
-# Uses "space bar to continue" functionality for future log selection
+# Exit Function:
+    # Print successful exit to screen and exit script
 
 exit_func(){
+    echo ""
     echo "file_perms_mod.sh exited successfully!"
     echo ""
     exit
 }
+
+# Modify Directory Permissions Function:
+    # Uses chmod command to modify permissions of all files in selected directory with permissions input provided by user
+    # Prints updated permissions for files in selected directory
+    # Uses "Press space bar to continue..." command to ensure user readability
 
 mod_dir_perms(){
     chmod -R $dir_perms $dir_path
@@ -49,6 +54,10 @@ mod_dir_perms(){
     echo ""
 }
 
+# While loop used to gather user input for selected directory and permissions modifications
+    # While loop runs until user inputs 'exit' command which initiates exit_func() function
+    # Once user supplies input mod_dir_perms() function is run
+
 while true
 do
     clear
@@ -62,15 +71,16 @@ do
     echo "Enter the directory path where you would like to modify the permissions of all files within:"
     echo "Type 'exit' to exit program" 
     read dir_path
+
+    if [[ $dir_path == "exit" ]]; then
+        exit_func
+    fi
+
     echo "-----------------------------------------------------------------------------------"
     echo "Files and folders in selected directory with their permissions listed below:"
     echo ""
     ls $dir_path -l
     echo "-----------------------------------------------------------------------------------"
-
-    if [[ $dir_path == "exit" ]]; then
-        exit_func
-    fi
 
     echo "Input the permissions settings you would like to implement (Ex. 777):"
     echo "Type 'exit' to exit program"  
@@ -83,9 +93,5 @@ do
 
     mod_dir_perms
 done
-
-echo ""
-read -n 1 -r -s -p $'Press space bar to continue...\n'
-echo ""
 
 # End
