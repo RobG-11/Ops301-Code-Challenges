@@ -20,7 +20,6 @@
 # My Sources:
     # [Practical Ping Command in Linux Examples](https://adamtheautomator.com/ping-command-in-linux/)
     # [Bash Script – Press Any Key To Continue](https://www.tweaking4all.com/software/linux-software/bash-press-any-key/)
-    # 
 
 # Main
 
@@ -35,6 +34,10 @@ exit_func(){
     exit
 }
 
+# hello_world function:
+    # Prints "Hello World!" to screen
+    # Uses "Press space bar to continue..." command to ensure user readability
+
 hello_world(){
     echo ""
     echo "Hello World!"
@@ -42,6 +45,10 @@ hello_world(){
     read -n 1 -r -s -p $'Press space bar to continue...\n'
     echo ""
 }
+
+# ping_loopback function:
+    # Pings computers loopback address four times and prints output to screen
+    # Uses "Press space bar to continue..." command to ensure user readability
 
 ping_loopback(){
     echo ""
@@ -51,6 +58,10 @@ ping_loopback(){
     echo ""
 }
 
+# net_adap_info function:
+    # Executes ifconfig -a command and prints output to screen
+    # Uses "Press space bar to continue..." command to ensure user readability
+
 net_adap_info(){
     echo ""
     ifconfig -a
@@ -58,6 +69,9 @@ net_adap_info(){
     read -n 1 -r -s -p $'Press space bar to continue...\n'
     echo ""
 }
+
+# While loop prints menu and reads option variable input by user
+    # Conditionals determine which function above is executed based on option variable input
 
 while true
 do
