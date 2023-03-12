@@ -83,6 +83,7 @@ do
     echo "----------------------------------------------------------------------------"
     echo "Files and folders in selected directory with their permissions listed below:"
     echo "----------------------------------------------------------------------------"
+    echo ""
     ls $dir_path -l
     echo ""
     
