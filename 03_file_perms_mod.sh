@@ -17,15 +17,42 @@
 # My Sources:
     # [How to Change File Permissions Recursively with chmod in Linux](https://phoenixnap.com/kb/chmod-recursive)
     # [Bash Script – Press Any Key To Continue](https://www.tweaking4all.com/software/linux-software/bash-press-any-key/)
+    # [Bash Scripting – Write Output of Bash Command into Log File](https://www.geeksforgeeks.org/bash-scripting-write-output-of-bash-command-into-log-file/)
+    # [Bash Scripting – For Loop](https://www.geeksforgeeks.org/bash-scripting-for-loop/)
+    # [Nested c-style loops in bash](https://stackoverflow.com/questions/7786342/nested-c-style-loops-in-bash)
 
 # Main
 
-# Create new directory with three files (used to test script functionality)
+# Accept user input to create new directories and files (used to test script functionality)
 
-mkdir New_Dir
-touch New_Dir/file1.txt
-touch New_Dir/file2.txt
-touch New_Dir/file3.txt
+clear
+
+echo "Enter the number of directories (max 5) you would like to create and press ENTER:"
+read create_dirs
+echo ""
+    
+echo "Enter the number of files (max 5) you would like to create in each directory and press ENTER:"
+read create_files
+echo ""
+
+# create_dirs For loop
+    # Initializes loop variable i=1
+    # For all instances where i <= create_dirs increment i by 1 after each iteration and do...
+    # Create directory, name it dir with current i value appended
+
+# create_files For loop
+    # Initializes loop variable j=1
+    # For all instances where j <= create_files increment j by 1 after each iteration and do...
+    # Create file in dir$i, name it file with current j value appended
+
+for ((i=1; i<=create_dirs; i++))
+do
+    mkdir dir$i
+    for ((j=1; j<=create_files; j++))
+    do
+        touch dir$i/file$j.txt
+    done
+done
 
 # Exit Function:
     # Print successful exit to screen and exit script
