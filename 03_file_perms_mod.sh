@@ -17,21 +17,26 @@
 # My Sources:
     # [How to Change File Permissions Recursively with chmod in Linux](https://phoenixnap.com/kb/chmod-recursive)
     # [Bash Script – Press Any Key To Continue](https://www.tweaking4all.com/software/linux-software/bash-press-any-key/)
-    # [Bash Scripting – Write Output of Bash Command into Log File](https://www.geeksforgeeks.org/bash-scripting-write-output-of-bash-command-into-log-file/)
     # [Bash Scripting – For Loop](https://www.geeksforgeeks.org/bash-scripting-for-loop/)
     # [Nested c-style loops in bash](https://stackoverflow.com/questions/7786342/nested-c-style-loops-in-bash)
+    # [Bash Scripting – Write Output of Bash Command into Log File](https://www.geeksforgeeks.org/bash-scripting-write-output-of-bash-command-into-log-file/)
+
 
 # Main
+
+# Create file-perms_mod.sh log file to store all script actions
+
+touch fpm_log.txt
 
 # Accept user input to create new directories and files (used to test script functionality)
 
 clear
 
-echo "Enter the number of directories (max 5) you would like to create and press ENTER:"
+echo "Enter the number of directories (max 5 please!) you would like to create and press ENTER:"
 read create_dirs
 echo ""
     
-echo "Enter the number of files (max 5) you would like to create in each directory and press ENTER:"
+echo "Enter the number of files (max 5 please!) you would like to create in each directory and press ENTER:"
 read create_files
 echo ""
 
@@ -39,38 +44,46 @@ echo ""
     # Initializes loop variable i=1
     # For all instances where i <= create_dirs increment i by 1 after each iteration and do...
     # Create directory, name it dir with current i value appended
+    # Sends current DTG with action appended to fpm_log.txt file
 
-# create_files For loop
+# Nested create_files For loop
     # Initializes loop variable j=1
     # For all instances where j <= create_files increment j by 1 after each iteration and do...
     # Create file in dir$i, name it file with current j value appended
+    # Sends current DTG with action appended to fpm_log.txt file
 
 for ((i=1; i<=create_dirs; i++))
 do
     mkdir dir$i
+    echo $(date +%m-%d-%Y-%T) - "Directory Created: dir$i">>fpm_log.txt
     for ((j=1; j<=create_files; j++))
     do
         touch dir$i/file$j.txt
+        echo $(date +%m-%d-%Y-%T) - "File Created: /dir$i/file$j">>fpm_log.txt
     done
 done
 
 # Exit Function:
     # Print successful exit to screen and exit script
+    # Log exit timestamp in fpm_log.txt file
 
 exit_func(){
     echo ""
     echo "file_perms_mod.sh exited successfully!"
     echo ""
+    echo $(date +%m-%d-%Y-%T) - "file_perms_mod.sh exited successfully!">>fpm_log.txt
     exit
 }
 
 # Modify Directory Permissions Function:
     # Uses chmod command to modify permissions of all files in selected directory with permissions input provided by user
+    # Logs exit timestamp in fpm_log.txt file
     # Prints updated permissions for files in selected directory
     # Uses "Press space bar to continue..." command to ensure user readability
 
 mod_dir_perms(){
     chmod -R $dir_perms $dir_path
+    echo $(date +%m-%d-%Y-%T) - "Directory Modified / Permissions: $dir_path / $dir_perms">>fpm_log.txt
     echo "-----------------------------------------------------------------------------"
     echo "Files and folders in selected directory with UPDATED permissions listed below"
     echo "-----------------------------------------------------------------------------"
@@ -114,7 +127,6 @@ do
     ls $dir_path -l
     echo ""
     
-
     echo "Input the permissions settings you would like to implement (Ex. 777):"
     echo "Type 'exit' to exit program"  
     read dir_perms
