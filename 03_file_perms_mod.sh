@@ -56,11 +56,11 @@ echo ""
 for ((i=1; i<=create_dirs; i++))
 do
     mkdir dir$i
-    echo $(date +%m-%d-%Y-%T) - "Directory Created: dir$i">>fpm_log.txt
+    echo $(date "+%d %b %y %H:%M") - "Directory Created: dir$i">>fpm_log.txt
     for ((j=1; j<=create_files; j++))
     do
         touch dir$i/file$j.txt
-        echo $(date +%m-%d-%Y-%T) - "File Created: /dir$i/file$j">>fpm_log.txt
+        echo $(date "+%d %b %y %H:%M") - "File Created: /dir$i/file$j">>fpm_log.txt
     done
 done
 
@@ -72,7 +72,7 @@ exit_func(){
     echo ""
     echo "file_perms_mod.sh exited successfully!"
     echo ""
-    echo $(date +%m-%d-%Y-%T) - "file_perms_mod.sh exited successfully!">>fpm_log.txt
+    echo $(date "+%d %b %y %H:%M") - "file_perms_mod.sh exited successfully!">>fpm_log.txt
     exit
 }
 
@@ -88,7 +88,7 @@ exit_func(){
 mod_dir_perms(){
     chmod -R $dir_perms $dir_path
     echo ""
-    echo $(date +%m-%d-%Y-%T) - "Directory Modified / Permissions: $dir_path / $dir_perms">>fpm_log.txt
+    echo $(date "+%d %b %y %H:%M") - "Directory Modified / Permissions: $dir_path / $dir_perms">>fpm_log.txt
     echo "-----------------------------------------------------------------------------"
     echo "Files and folders in selected directory with UPDATED permissions listed below"
     echo "-----------------------------------------------------------------------------"
