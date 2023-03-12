@@ -46,9 +46,9 @@ mod_dir_perms(){
     chmod -R $dir_perms $dir_path
     echo "-----------------------------------------------------------------------------------"
     echo "Files and folders in selected directory with UPDATED permissions listed below"
+    echo "-----------------------------------------------------------------------------------"
     echo ""
     ls $dir_path -l
-    echo "-----------------------------------------------------------------------------------"
     
     echo ""
     read -n 1 -r -s -p $'Press space bar to continue...\n'
@@ -62,12 +62,14 @@ mod_dir_perms(){
 while true
 do
     clear
-    echo "MUST RUN BASH SCRIPT WITH SUDO FOR FULL FUNCTIONALITY"
+    echo "MUST RUN BASH SCRIPT WITH SUDO FOR FULL FUNCTIONALITY!"
+    echo ""
     echo "-----------------------------------------------------------------------------------"
     echo "Files and folders in current working directory with their permissions listed below:"
+    echo "-----------------------------------------------------------------------------------"
     echo ""
     ls -l
-    echo "-----------------------------------------------------------------------------------"
+    
     echo ""
     echo "Enter the directory path where you would like to modify the permissions of all files within:"
     echo "Type 'exit' to exit program" 
@@ -77,11 +79,13 @@ do
         exit_func
     fi
 
+    echo ""
     echo "-----------------------------------------------------------------------------------"
     echo "Files and folders in selected directory with their permissions listed below:"
-    echo ""
-    ls $dir_path -l
     echo "-----------------------------------------------------------------------------------"
+    ls $dir_path -l
+    echo ""
+    
 
     echo "Input the permissions settings you would like to implement (Ex. 777):"
     echo "Type 'exit' to exit program"  
