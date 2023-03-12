@@ -16,6 +16,7 @@
 
 # My Sources:
     # [How to Change File Permissions Recursively with chmod in Linux](https://phoenixnap.com/kb/chmod-recursive)
+    # [Bash Script – Press Any Key To Continue](https://www.tweaking4all.com/software/linux-software/bash-press-any-key/)
 
 # Main
 
