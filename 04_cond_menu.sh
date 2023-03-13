@@ -92,6 +92,8 @@ do
         hello_world
     elif [[ $option == "2" ]]; then
         ping_loopback
+    elif [[ $option == "3" ]]; then
+        net_adap_info
     else
         echo "Invalid Input!"
     fi
