@@ -28,7 +28,7 @@ clear
 cur_dtg=$(date +%m-%d-%Y-%T)
 
 # Creates .txt file with current DTG appended to cur_dtg variable for file name in current working directory
-# Copies syslog content into .txt file
+    # Copies syslog content into .txt file
 
 cp /var/log/syslog "$cur_dtg-sys_log.txt"
 
