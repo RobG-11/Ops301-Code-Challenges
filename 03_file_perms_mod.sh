@@ -21,7 +21,7 @@
     # [Nested c-style loops in bash](https://stackoverflow.com/questions/7786342/nested-c-style-loops-in-bash)
     # [Bash Scripting – Write Output of Bash Command into Log File](https://www.geeksforgeeks.org/bash-scripting-write-output-of-bash-command-into-log-file/)
     # [Linux / UNIX: Bash Script Sleep or Delay a Specified Amount of Time](https://www.cyberciti.biz/faq/linux-unix-sleep-bash-scripting/)
-    # 
+    # [Bash: while read line](https://linuxhint.com/while_read_line_bash/)
 
 # Main
 

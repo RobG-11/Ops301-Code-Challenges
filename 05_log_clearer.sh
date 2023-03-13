@@ -53,9 +53,9 @@ log_operations(){
     read -n 1 -r -s -p $'Press space bar to compress log into backup file...\n'
     echo ""
 
-    mkdir $log_file.tgz
+    mkdir /backup/$log_file
     tar cfz log_file.tgz $log_file
-    comp_log_size=$(stat -c %s "$log_file.tgz")
+    comp_log_size=$(stat -c %s "$log_file.tar.gz")
     echo "Backup compressed $logfile.tgz is comp_log size bytes"
 
     echo ""
