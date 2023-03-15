@@ -30,6 +30,7 @@
     # [Gzip Command in Linux](https://www.geeksforgeeks.org/gzip-command-linux/)
     # [Bash Scripting Tutorial - 4. Arithmetic](https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php)
     # [5 Ways to Empty or Delete a Large File Content in Linux](https://www.tecmint.com/empty-delete-file-content-linux/)
+    # [You don't know Bash: An introduction to Bash arrays](https://opensource.com/article/18/5/you-dont-know-bash-intro-bash-arrays)
 
 # Main
 
@@ -91,8 +92,8 @@ log_operations(){
 # while loop:
     # Menu functionality used to determine user input (read log_file_selection)
     # Conditional to determine if exit is selected
-    # Conditional to determine log file selection, once identified log_operations function is run
-    # Else statement is for invalid input
+    # log_array declared with all potential user input
+    # log_operations function called and user input selects correct log name from log_array to supply to function
 
 while true
 do
@@ -118,33 +119,9 @@ do
         exit_func
     fi
 
-    if [[ $log_file_selection == "1" ]]; then
-        log_file="syslog"
-        log_operations
-    elif [[ $log_file_selection == "2" ]]; then
-        log_file="wtmp"
-        log_operations
-    elif [[ $log_file_selection == "3" ]]; then
-        log_file="lastlog"
-        log_operations
-    elif [[ $log_file_selection == "4" ]]; then
-        log_file="auth.log"
-        log_operations
-    elif [[ $log_file_selection == "5" ]]; then
-        log_file="bootstrap.log"
-        log_operations
-    elif [[ $log_file_selection == "6" ]]; then
-        log_file="dmesg"
-        log_operations
-    elif [[ $log_file_selection == "7" ]]; then
-        log_file="kern.log"
-        log_operations
-    elif [[ $log_file_selection == "8" ]]; then
-        log_file="faillog"
-        log_operations
-    else
-        echo "Invalid Input!"
-    fi
+    log_array=("x" "syslog" "wtmp" "lastlog" "auth.log" "bootstrap.log" "dmesg" "kern.log" "faillog")
+    log_operations ${log_array[$log_file_selection]}
+
 done
 
 # End

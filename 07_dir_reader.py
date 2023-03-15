@@ -29,7 +29,12 @@ import click
 
 # Main
 
+# Clears screen
+
 click.clear()
+
+# Declares user_input function:
+    # Function prints question, accepts user input, and then returns user_input
 
 def user_input():
     print("Please enter the name of the directory path you would like to view and press ENTER:");
@@ -59,4 +64,5 @@ for (root, dirs, files) in os.walk(file_path):
     print("-------------------------------------------------")
     print()
     exit()
+    
 # End
