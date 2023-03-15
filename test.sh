@@ -2,7 +2,11 @@
 
 # Main
 
-log_file="/var/log"
-tar cfz /backup/$log_file $log_file
+
+
+cur_dtg=$(date +%m-%d-%Y-%T)
+mkdir /var/log/backups
+gzip -k /var/log/$log_file
+mv /var/log/$log_file.gz /var/log/backups/$log_file-$cur_dtg.gz
 
 # End

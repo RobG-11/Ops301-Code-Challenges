@@ -27,7 +27,9 @@
 # My Sources:
     # [How to check the file size in Linux/Unix bash shell scripting](https://www.cyberciti.biz/faq/howto-bash-check-file-size-in-linux-unix-scripting/)
     # [How to compress files on Linux 5 ways](https://www.networkworld.com/article/3538471/how-to-compress-files-on-linux-5-ways.html)
-    # 
+    # [Gzip Command in Linux](https://www.geeksforgeeks.org/gzip-command-linux/)
+    # [Bash Scripting Tutorial - 4. Arithmetic](https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php)
+    # [5 Ways to Empty or Delete a Large File Content in Linux](https://www.tecmint.com/empty-delete-file-content-linux/)
 
 # Main
 
@@ -36,42 +38,59 @@
 
 exit_func(){
     echo ""
-    echo "cond_menu.sh exited successfully!"
+    echo "log_backup.sh exited successfully!"
     echo ""
     exit
 }
 
 # log_operations() function:
-    # 
+    # log_size is determined using stat command, -c %s prints file size in bytes 
+        # log_size is printed to screen
+    # Space bar functionality to compress log and place .gz file in /var/log/backups folder
+        # cur_dtg variable stores current date
+        # /var/log/backups directory created with mkdir, "directory already exists" errors are supressed using 2>/dev/null
+        # gzip command is used to compress log_file, -k flag used to keep original file
+        # mv command moves compressed .gz file to backups folder and appends current date from cur_dtg variable to file name
+        # comp_log_size is determined using stat -c %s again
+            # Size of .gz file is printed to screen
+    # Space bar functionality to determine difference in bytes between original file & compressed backup .gz file
+        # log_size_diff calculated and printed to screen
+    # Space bar functionality to clear original log file
+        # truncate command used to delete all content from original log_file, confirmation printed to screen
 
 log_operations(){
-    log_size=$(stat -c %s "$log_file")
+    log_size=$(stat -c %s "/var/log/$log_file")
     echo ""
-    echo "Size of $log_file_loc is $log_size bytes"
-
+    echo "Size of $log_file file is $log_size bytes"
     echo ""
-    read -n 1 -r -s -p $'Press space bar to compress log into backup file...\n'
+    
+    read -n 1 -r -s -p $'Press space bar to compress log and place .gz file in /var/log/backups folder...\n'
     echo ""
-
-    mkdir /backup/$log_file
-    tar cfz log_file.tgz $log_file
-    comp_log_size=$(stat -c %s "$log_file.tar.gz")
-    echo "Backup compressed $logfile.tgz is comp_log size bytes"
-
+    cur_dtg=$(date +%m-%d-%Y-%T)
+    mkdir /var/log/backups 2>/dev/null
+    gzip -k /var/log/$log_file
+    mv /var/log/$log_file.gz /var/log/backups/$log_file-$cur_dtg.gz
+    comp_log_size=$(stat -c %s "/var/log/backups/$log_file-$cur_dtg.gz")
+    echo "Backup compressed $logfile.gz file is $comp_log_size bytes"
     echo ""
-    read -n 1 -r -s -p $'Press space bar to determine difference in bytes between original file & compressed backup...\n'
+   
+    read -n 1 -r -s -p $'Press space bar to determine difference in bytes between original file & compressed backup .gz file...\n'
     echo ""
-
-    log_size_diff=$log_size-$comp_log_size
-    echo "$log_file.tgz is $log_size_diff bytes smaller than $log_file size "
-
+    log_size_diff=$((log_size - comp_log_size))
+    echo "$log_file.gz file is $log_size_diff bytes smaller than $log_file file"
     echo ""
+    
     read -n 1 -r -s -p $'Press space bar to clear original log file...\n'
     echo ""
-
-    truncate --size 0 $log_file
+    sudo truncate -s 0 /var/log/$log_file
     echo "$logfile cleared!"
 }
+
+# while loop:
+    # Menu functionality used to determine user input (read log_file_selection)
+    # Conditional to determine if exit is selected
+    # Conditional to determine log file selection, once identified log_operations function is run
+    # Else statement is for invalid input
 
 while true
 do
@@ -92,10 +111,10 @@ do
     fi
 
     if [[ $log_file_selection == "1" ]]; then
-        log_file="/var/log/syslog"
+        log_file="syslog"
         log_operations
     elif [[ $log_file_selection == "2" ]]; then
-        log_file="/var/log/wtmp"
+        log_file="wtmp"
         log_operations
     else
         echo "Invalid Input!"
