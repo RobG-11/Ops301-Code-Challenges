@@ -9,21 +9,15 @@
         # Script must enclose the os.walk() function within a python function that hands it the user input file path
 
 # Stretch Goals
-    # Instead of the os module, utilize the subprocess module instead
-        # Refer to python.org for how this can be achieved
-
-# Code Fellows Sources:
-    # [Miscellaneous operating system interfaces](https://docs.python.org/3/library/os.html)
-    # [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/)
+    # Have the script save the output as a .txt file
+        # Have the script open the .txt file with Libre Office Writer
+    # Add a function to your Python script that performs the following as a first step to prepare a test directory
+        # Takes a user input string
+        # Creates a directory named the string using os.makdirs function
+        # Create sub-directories within the directory named ‘string_01’, ‘string_02’, and ‘string_03’
 
 # My Sources:
-    # [How to run bash script in Python?](https://www.geeksforgeeks.org/how-to-run-bash-script-in-python/)
-    # [Running Bash commands in Python](https://stackoverflow.com/questions/4256107/running-bash-commands-in-python)
-    # [2 practical ways to use the Python subprocess module](https://www.redhat.com/sysadmin/use-python-subprocess-bash)
-    # [Python Tutorial](https://www.w3schools.com/python/)
-    # [How do I make python wait for a pressed key](https://www.edureka.co/community/102175/how-do-i-make-python-wait-for-a-pressed-key)
-    # [Clear Screen in Python](https://www.stechies.com/clear-screen-in-python/)
-    # [How to Execute Shell Commands in Python Using the Subprocess Run Method](https://linuxhint.com/execute_shell_python_subprocess_run_method/)
+    # 
 
 
 #!/usr/bin/env python3
@@ -31,6 +25,9 @@
 # Import libraries
 
 import os
+import click
+
+click.clear()
 
 # Declaration of variables
 
