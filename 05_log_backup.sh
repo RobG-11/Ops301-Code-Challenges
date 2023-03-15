@@ -83,7 +83,9 @@ log_operations(){
     read -n 1 -r -s -p $'Press space bar to clear original log file...\n'
     echo ""
     sudo truncate -s 0 /var/log/$log_file
-    echo "$logfile cleared!"
+    echo "$log_file file cleared!"
+    echo ""
+    read -n 1 -r -s -p $'Press space bar to continue...\n'
 }
 
 # while loop:
@@ -101,6 +103,12 @@ do
     echo "";
     echo "1) System Logging Records (syslog) - non-kernel boot errors, app-related service errors, messages logged during system startup"
     echo "2) Who & When (wtmp) - provides utmp history of user logins & logouts, system events, system status, system boot time"
+    echo "3) Login Records (lastlog) - last login attempts"
+    echo "4) Authentication Log Records (auth.log) - all authentication related events"
+    echo "5) Bootstrap Log Records (bootstrap.log) - booting related info and messages logged during system startup process"
+    echo "6) Dmesg Log Records (dmesg) - info related to hardware devices and their drivers";
+    echo "7) Kernel Logging Records (kern.log) - information logged by kernel";
+    echo "8) Login Failure Records (faillog) - information logged by kernel";
     echo "exit) exit program"
     echo ""
     echo "Please choose a log file to manipulate or type exit to exit program:"
@@ -115,6 +123,24 @@ do
         log_operations
     elif [[ $log_file_selection == "2" ]]; then
         log_file="wtmp"
+        log_operations
+    elif [[ $log_file_selection == "3" ]]; then
+        log_file="lastlog"
+        log_operations
+    elif [[ $log_file_selection == "4" ]]; then
+        log_file="auth.log"
+        log_operations
+    elif [[ $log_file_selection == "5" ]]; then
+        log_file="bootstrap.log"
+        log_operations
+    elif [[ $log_file_selection == "6" ]]; then
+        log_file="dmesg"
+        log_operations
+    elif [[ $log_file_selection == "7" ]]; then
+        log_file="kern.log"
+        log_operations
+    elif [[ $log_file_selection == "8" ]]; then
+        log_file="faillog"
         log_operations
     else
         echo "Invalid Input!"
