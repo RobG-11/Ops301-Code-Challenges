@@ -17,8 +17,8 @@
         # Create sub-directories within the directory named ‘string_01’, ‘string_02’, and ‘string_03’
 
 # My Sources:
-    # 
-
+    # [Python 3 – input() function](https://www.geeksforgeeks.org/python-3-input-function/)
+    # [os.walk() in Python](https://www.geeksforgeeks.org/os-walk-python/)
 
 #!/usr/bin/env python3
 
@@ -27,26 +27,36 @@
 import os
 import click
 
-click.clear()
-
-# Declaration of variables
-
-### Read user input here into a variable
-
-# Declaration of functions
-
-### Declare a function here
-
-for (root, dirs, files) in os.walk("testdir"):
-    ### Add a print command here to print ==root==
-    print(root)
-    ### Add a print command here to print ==dirs==
-    print(dirs)
-    ### Add a print command here to print ==files==
-    print(files)
-
 # Main
 
-### Pass the variable into the function here
+click.clear()
 
+def user_input():
+    print("Please enter the name of the directory path you would like to view and press ENTER:");
+    file_path = input()
+    return file_path
+
+file_path = user_input()
+
+for (root, dirs, files) in os.walk(file_path):
+    ### Add a print command here to print ==root==
+    print()
+    input("Press Enter to view Root of path listed below...")
+    print("-------------------------------------------------")
+    print(root)
+    print("-------------------------------------------------")
+    ### Add a print command here to print ==dirs==
+    print()
+    input("Press Enter to view Directories listed below...")
+    print("-------------------------------------------------")
+    print(dirs)
+    print("-------------------------------------------------")
+    ### Add a print command here to print ==files==
+    print()
+    input("Press Enter to view Files listed below...")
+    print("-------------------------------------------------")
+    print(files)
+    print("-------------------------------------------------")
+    print()
+    exit()
 # End
