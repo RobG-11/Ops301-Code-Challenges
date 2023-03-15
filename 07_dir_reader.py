@@ -19,6 +19,7 @@
 # My Sources:
     # [Python 3 – input() function](https://www.geeksforgeeks.org/python-3-input-function/)
     # [os.walk() in Python](https://www.geeksforgeeks.org/os-walk-python/)
+    # [Python Infinite While Loop](https://www.tutorialkart.com/python/python-while-loop/python-infinite-while-loop/)
 
 #!/usr/bin/env python3
 
@@ -37,7 +38,7 @@ click.clear()
     # Function prints question, accepts user input, and then returns user_input
 
 def user_input():
-    print("Please enter the name of the directory path you would like to view and press ENTER:");
+    print("Please enter name of directory path to view and press ENTER or type exit to exit dir_reader.py:")
     file_path = input()
     return file_path
 
@@ -45,24 +46,20 @@ file_path = user_input()
 
 for (root, dirs, files) in os.walk(file_path):
     ### Add a print command here to print ==root==
-    print()
-    input("Press Enter to view Root of path listed below...")
+    input("\nPress Enter to view current directory...")
     print("-------------------------------------------------")
     print(root)
     print("-------------------------------------------------")
     ### Add a print command here to print ==dirs==
-    print()
-    input("Press Enter to view Directories listed below...")
+    input("\nPress Enter to view subdirectories...")
     print("-------------------------------------------------")
     print(dirs)
     print("-------------------------------------------------")
     ### Add a print command here to print ==files==
-    print()
-    input("Press Enter to view Files listed below...")
+    input("\nPress Enter to view Files...")
     print("-------------------------------------------------")
     print(files)
     print("-------------------------------------------------")
-    print()
-    exit()
-    
+    input("\nPress Enter to move to next iteration...")
+    click.clear()
 # End
