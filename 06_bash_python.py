@@ -29,14 +29,15 @@
     # [Clear Screen in Python](https://www.stechies.com/clear-screen-in-python/)
     # [How to Execute Shell Commands in Python Using the Subprocess Run Method](https://linuxhint.com/execute_shell_python_subprocess_run_method/)
 
-
-# Main
+#!/usr/bin/env python3
 
 # Import subprocess module for shell command functionality
 # Import click module for python screen clearing function () click.clear()
 
 import subprocess
 import click
+
+# Main
 
 # Declare variables equal to the output of running the subprocess.run command on specific bash commands
 # capture_output=True ensures the capture of the output of the bash commands
