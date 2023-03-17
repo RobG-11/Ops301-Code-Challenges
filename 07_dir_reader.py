@@ -20,6 +20,7 @@
     # [Python 3 – input() function](https://www.geeksforgeeks.org/python-3-input-function/)
     # [os.walk() in Python](https://www.geeksforgeeks.org/os-walk-python/)
     # [Python Infinite While Loop](https://www.tutorialkart.com/python/python-while-loop/python-infinite-while-loop/)
+    # [Python Write Text File](https://www.pythontutorial.net/python-basics/python-write-text-file/)
 
 #!/usr/bin/env python3
 
@@ -62,4 +63,5 @@ for (root, dirs, files) in os.walk(file_path):
     print("-------------------------------------------------")
     input("\nPress Enter to move to next iteration...")
     click.clear()
+
 # End
