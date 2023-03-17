@@ -92,7 +92,8 @@ log_operations(){
 # while loop:
     # Menu functionality used to determine user input (read log_file_selection)
     # Conditional to determine if exit is selected
-    # Conditional to determine log_file variable and send to log_operations function
+    # log_array declared with all values for logs within
+    # log_file variable declared equal to log_file_selection input, retrieving string in array
 
 while true
 do
@@ -118,49 +119,9 @@ do
         exit_func
     fi
 
-    if [[ $log_file_selection == 1 ]]; then
-        $log_file="syslog"
-        log_operations
-
-    elif [[ $log_file_selection == 2 ]]; then
-        $log_file="wtmp"
-        log_operations
-
-    elif [[ $log_file_selection == 3 ]]; then
-        $log_file="lastlog"
-        log_operations
-
-    elif [[ $log_file_selection == 4 ]]; then
-        $log_file="auth.log"
-        log_operations
-
-    elif [[ $log_file_selection == 5 ]]; then
-        $log_file="bootstrap.log"
-        log_operations
-
-    elif [[ $log_file_selection == 6 ]]; then
-        $log_file="dmesg"
-        log_operations
-
-    elif [[ $log_file_selection == 7 ]]; then
-        $log_file="kern.log"
-        log_operations
-
-    elif [[ $log_file_selection == 8 ]]; then
-        $log_file="faillog"
-        log_operations
-
-    else
-        echo "";
-        echo "Invalid Log Selection Input! Try Again!";
-    fi
-
+    log_array=("x" "syslog" "wtmp" "lastlog" "auth.log" "bootstrap.log" "dmesg" "kern.log" "faillog")
+    log_file=${log_array[$log_file_selection]}
     log_operations
-
-    # log_array=("x" "syslog" "wtmp" "lastlog" "auth.log" "bootstrap.log" "dmesg" "kern.log" "faillog")
-    # $log_file=${log_array[$log_file_selection]}
-    # log_operations
-
 done
 
 # End
