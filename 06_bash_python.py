@@ -54,16 +54,13 @@ click.clear()
 # Request user press the ENTER key to execute commands
 # Prints the results of each command to the screen using stdout
 
-input("Press Enter to run bash whoami command...")
-print()
+input("Press Enter to run bash whoami command...\n")
 print(who_am_i.stdout)
 
-input("Press Enter to run bash ip a command...")
-print()
+input("Press Enter to run bash ip a command...\n")
 print(ip_a.stdout)
 
-input("Press Enter to run bash lshw -short command...")
-print()
+input("Press Enter to run bash lshw -short command...\n")
 print(lshw_short.stdout)
 print("Script Complete!")
 
