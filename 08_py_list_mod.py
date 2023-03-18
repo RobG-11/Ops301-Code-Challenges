@@ -1,6 +1,6 @@
-# Script: 07 - Directory Creation
+# Script: 08 - Python Collections
 # Author: Robert Gregor
-# Date of latest revision: 152030FMAR23
+# Date of latest revision: 182030FMAR23
 
 # Objectives
     # Create a Python script that includes the following:
