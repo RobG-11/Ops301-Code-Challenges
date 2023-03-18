@@ -23,6 +23,9 @@
 import click
 
 # Functions
+    # print_item() - Prints user_list, takes integer as user input to determine which item in list to print
+    # print_item_range() - Print user_list, takes two integers as input to determine range of items to print
+    # change_item() - Prints user_list, take integer input to determine it to change and string input for change value
 
 def print_item():
     click.clear()
@@ -48,6 +51,13 @@ def change_item():
     print("\nBelow is your modified list:\n")
     print(user_list)
 
+# While loop - infinite, only broken by utilizing the 'exit' command
+    # Clears screen, creates empty list
+    # For loop - runs for 10 iterations storing user list_item input in user_list
+        # exit functionality
+        # user_list.append is used to add additional items to list
+    # User list input is printed to screen
+
 while True:
 
     click.clear()
@@ -69,6 +79,10 @@ while True:
     print("Your list is shown below")
     print("------------------------")
     print(user_list)
+
+    # Nested While loop - infinite, only broken by utilizing the 'exit' command
+        # Requests user input to determine list item to modify
+        # Conditional used to determine function to call, new list entry, exit functionality, or invalid input
 
     while True:
               
