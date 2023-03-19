@@ -16,6 +16,7 @@
 
 # My Sources:
     # [Get-ADUser](https://learn.microsoft.com/en-us/powershell/module/activedirectory/get-aduser?view=windowsserver2022-ps)
+    # [Format-Table](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/format-table?view=powershell-7.3)
     # 
 
 # Main
@@ -29,7 +30,7 @@ function Create-NewUser {
 }
 
 Write-Host "Please ensure you have installed RSAT: AD Domain Services & Lightweight Directory Service Tools"
-
+Write-Host ""
 Write-Host "Welcome to the new user account set up program"
 Write-Host "----------------------------------------------"
 
@@ -51,6 +52,6 @@ Write-Host ""
 Write-Host "New user $user_name created! Press any key to verify..."
 $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
-Get-ADUser -Filter "Name -eq '$user_name'" -Properties * | Format-Table Name, SamAccountName, Created, Company, Office, Department, Title, Enabled
+Get-ADUser -Filter "Name -eq '$user_name'" | Format-Table Name, SamAccountName, Created, Company, Office, Department, Title, Enabled
 
 # End
