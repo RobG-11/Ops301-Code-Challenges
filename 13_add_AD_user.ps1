@@ -46,9 +46,9 @@ Write-Host "Press any key to create user..."
 $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 Create-NewUser
-Write-Output "New user $user_name created!"
+
 Write-Host ""
-Write-Host "Press any key to verify user was created with Get-ADUser..."
+Write-Host "New user $user_name created! Press any key to verify..."
 $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 Get-ADUser -Filter "Name -eq '$user_name'" -Properties * | Format-Table Name, SamAccountName, Created, Company, Office, Department, Title, Enabled
