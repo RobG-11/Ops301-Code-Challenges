@@ -15,39 +15,42 @@
     
 
 # My Sources:
-    # [What is `n in Powershell?](https://www.educative.io/answers/what-is-n-in-powershell)
     # [Get-ADUser](https://learn.microsoft.com/en-us/powershell/module/activedirectory/get-aduser?view=windowsserver2022-ps)
-
-
-# Main
+    # 
 
 # Main
+
+Import-Module ActiveDirectory
 
 clear
 
 function Create-NewUser {
-    New-ADUser -Name $user_name -Accountpassword $password -DisplayName $full_name -Company $company_name  -Office $office_location -Department $dept_name -Title $job_title -Enabled $true
+    New-ADUser -Name $full_name -SamAccountName $user_name -Accountpassword $password -Company $company_name  -Office $office_location -Department $dept_name -Title $job_title -Enabled $true
 }
 
-Write-Output "Welcome to the new user account set up program!"
-Write-Output "-----------------------------------------------"
+Write-Output "Please ensure you have installed RSAT: AD Domain Services & Lightweight Directory Service Tools"
 
-$company_name = Read-Host "Please enter the company name: "
+Write-Output "Welcome to the new user account set up program"
+Write-Output "----------------------------------------------"
+
 $full_name = Read-Host "Please enter new users full name (First Last): "
+$user_name = Read-Host "Please enter new users USERNAME: "
+$password = Read-Host -AsSecureString "Please enter $user_full_name's secure password: "
+$company_name = Read-Host "Please enter the company name: "
 $office_location = Read-Host "Please enter $user_full_name's office location: "
 $dept_name = Read-Host "Please enter $user_full_name's department: "
 $job_title = Read-Host "Please enter $user_full_name's job title: "
-$user_name = Read-Host "Please enter new users USERNAME: "
-$password = Read-Host -AsSecureString "Please enter $user_full_name's secure password: "
 
+Write-Host ""
 Write-Host "Press any key to create user..."
 $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 Create-NewUser
-Write-Host "New user $user_name created!"
+Write-Output "New user $user_name created!"
+Write-Host ""
 Write-Host "Press any key to verify user was created with Get-ADUser..."
 $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
-Get-ADUser -Filter "Name -eq '$user_name"
+Get-ADUser -Filter "Name -eq '$user_name'" -Properties * | Format-Table Name, SamAccountName, Created, Company, Office, Department, Title, Enabled
 
 # End
