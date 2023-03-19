@@ -28,10 +28,10 @@ function Create-NewUser {
     New-ADUser -Name $full_name -SamAccountName $user_name -Accountpassword $password -Company $company_name  -Office $office_location -Department $dept_name -Title $job_title -Enabled $true
 }
 
-Write-Output "Please ensure you have installed RSAT: AD Domain Services & Lightweight Directory Service Tools"
+Write-Host "Please ensure you have installed RSAT: AD Domain Services & Lightweight Directory Service Tools"
 
-Write-Output "Welcome to the new user account set up program"
-Write-Output "----------------------------------------------"
+Write-Host "Welcome to the new user account set up program"
+Write-Host "----------------------------------------------"
 
 $full_name = Read-Host "Please enter new users full name (First Last): "
 $user_name = Read-Host "Please enter new users USERNAME: "
@@ -40,14 +40,14 @@ $company_name = Read-Host "Please enter the company name: "
 $office_location = Read-Host "Please enter $user_full_name's office location: "
 $dept_name = Read-Host "Please enter $user_full_name's department: "
 $job_title = Read-Host "Please enter $user_full_name's job title: "
-
 Write-Host ""
+
 Write-Host "Press any key to create user..."
 $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 Create-NewUser
-
 Write-Host ""
+
 Write-Host "New user $user_name created! Press any key to verify..."
 $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
