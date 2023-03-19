@@ -12,9 +12,12 @@
 
 # Code Fellows Sources:
     # [New-ADUser](https://learn.microsoft.com/en-us/powershell/module/activedirectory/new-aduser?view=windowsserver2022-ps)
+    
 
 # My Sources:
-    # [
+    # [What is `n in Powershell?](https://www.educative.io/answers/what-is-n-in-powershell)
+    # [Get-ADUser](https://learn.microsoft.com/en-us/powershell/module/activedirectory/get-aduser?view=windowsserver2022-ps)
+
 
 # Main
 
@@ -22,22 +25,29 @@
 
 clear
 
-function Get-AnyKeyToContinue {
-    Write-Host "Press any key to continue..."
-    $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-    clear
-}
-
 function Create-NewUser {
-    New-ADUser -Name $user_name -Accountpassword $password -DisplayName $user_full_name -Title  -Enabled $true
-
+    New-ADUser -Name $user_name -Accountpassword $password -DisplayName $full_name -Company $company_name  -Office $office_location -Department $dept_name -Title $job_title -Enabled $true
 }
 
 Write-Output "Welcome to the new user account set up program!"
+Write-Output "-----------------------------------------------'n"
 
-$user_full_name = Read-Host "Please enter new users full name (First Last): "
-$user_job_title = Read-Host "Please enter $user_full_name's job title: "
+$company_name = Read-Host "Please enter the company name: "
+$full_name = Read-Host "Please enter new users full name (First Last): "
+$office_location = Read-Host "Please enter $user_full_name's office location: "
+$dept_name = Read-Host "Please enter $user_full_name's department: "
+$job_title = Read-Host "Please enter $user_full_name's job title: "
 $user_name = Read-Host "Please enter new users USERNAME: "
 $password = Read-Host -AsSecureString "Please enter $user_full_name's secure password: "
 
+Write-Host "'nPress any key to create user..."
+$Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 Create-NewUser
+Write-Host "'nNew user $user_name created!"
+Write-Host "'nPress any key to verify user was created with Get-ADUser..."
+$Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
+Get-ADUser -Filter "Name -eq '$user_name"
+
+# End
