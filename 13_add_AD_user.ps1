@@ -17,3 +17,27 @@
     # [
 
 # Main
+
+# Main
+
+clear
+
+function Get-AnyKeyToContinue {
+    Write-Host "Press any key to continue..."
+    $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    clear
+}
+
+function Create-NewUser {
+    New-ADUser -Name $user_name -Accountpassword $password -DisplayName $user_full_name -Title  -Enabled $true
+
+}
+
+Write-Output "Welcome to the new user account set up program!"
+
+$user_full_name = Read-Host "Please enter new users full name (First Last): "
+$user_job_title = Read-Host "Please enter $user_full_name's job title: "
+$user_name = Read-Host "Please enter new users USERNAME: "
+$password = Read-Host -AsSecureString "Please enter $user_full_name's secure password: "
+
+Create-NewUser
