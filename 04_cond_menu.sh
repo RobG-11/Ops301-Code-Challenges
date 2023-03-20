@@ -20,6 +20,7 @@
 # My Sources:
     # [Practical Ping Command in Linux Examples](https://adamtheautomator.com/ping-command-in-linux/)
     # [Bash Script – Press Any Key To Continue](https://www.tweaking4all.com/software/linux-software/bash-press-any-key/)
+    # [Bash Shell Command to Find or Get IP address](https://www.cyberciti.biz/faq/bash-shell-command-to-find-get-ip-address/)
 
 # Main
 
@@ -64,7 +65,7 @@ ping_loopback(){
 
 net_adap_info(){
     echo ""
-    ifconfig -a
+    ip addr show
     echo ""
     read -n 1 -r -s -p $'Press space bar to continue...\n'
     echo ""
