@@ -21,34 +21,38 @@
 import os
 import click
 
-# Main
-
 # Clears screen
-
 click.clear()
 
-# Declares user_input function:
-    # Function prints question, accepts user input, and then returns user_input
+# Declare user_input() function:
+    # Prints question and accepts user input as file_path variable
+    # For loop iterates through file_path directory and prints current directory, subdirectories, and files to terminal
 
-file_path = input("Please enter name of directory path to view and press ENTER or type exit to exit dir_reader.py:\n")
+def user_input():
+    file_path = input("Please enter name of directory path to view and press ENTER or type exit to exit dir_reader.py:\n")
+    for (root, dirs, files) in os.walk(file_path):
+        # Add a print command here to print ==root==
+        input("\nPress Enter to view current directory...")
+        print("-------------------------------------------------")
+        print(root)
+        print("-------------------------------------------------")
+        # Add a print command here to print ==dirs==
+        input("\nPress Enter to view subdirectories...")
+        print("-------------------------------------------------")
+        print(dirs)
+        print("-------------------------------------------------")
+        # Add a print command here to print ==files==
+        input("\nPress Enter to view Files...")
+        print("-------------------------------------------------")
+        print(files)
+        print("-------------------------------------------------")
+        input("\nPress Enter to move to next iteration...")
+        click.clear()
 
-for (root, dirs, files) in os.walk(file_path):
-    ### Add a print command here to print ==root==
-    input("\nPress Enter to view current directory...")
-    print("-------------------------------------------------")
-    print(root)
-    print("-------------------------------------------------")
-    ### Add a print command here to print ==dirs==
-    input("\nPress Enter to view subdirectories...")
-    print("-------------------------------------------------")
-    print(dirs)
-    print("-------------------------------------------------")
-    ### Add a print command here to print ==files==
-    input("\nPress Enter to view Files...")
-    print("-------------------------------------------------")
-    print(files)
-    print("-------------------------------------------------")
-    input("\nPress Enter to move to next iteration...")
-    click.clear()
+# Main
+
+# Call user_input() functions
+
+user_input()
 
 # End
