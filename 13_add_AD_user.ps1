@@ -24,9 +24,13 @@ Import-Module ActiveDirectory
 
 clear
 
+# Create-NewUser function - Adds new active directory user with eight property values
+
 function Create-NewUser {
     New-ADUser -Name $full_name -SamAccountName $user_name -Accountpassword $password -Company $company_name  -Office $office_location -Department $dept_name -Title $job_title -Enabled $true
 }
+
+# Requests user input for eight AD property values and stores values in variables used for Create-NewUser function
 
 Write-Host "Please ensure you have installed RSAT: AD Domain Services & Lightweight Directory Service Tools"
 Write-Host ""
@@ -45,11 +49,15 @@ Write-Host ""
 Write-Host "Press any key to create user..."
 $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
+# Calls Create-NewUser function
+
 Create-NewUser
 Write-Host ""
 
 Write-Host "New user $user_name created! Press any key to verify..."
 $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
+# Verifies new user was created and prints formatted table with all eight properties to screen
 
 Get-ADUser -Filter "Name -eq '$user_name'" | Format-Table Name, SamAccountName, Created, Company, Office, Department, Title, Enabled
 
