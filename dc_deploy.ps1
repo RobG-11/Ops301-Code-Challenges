@@ -43,6 +43,8 @@ function New-Computer-Name{
     $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
 
+
+
 function Create-NewUser {
     clear
     Write-Host ""
