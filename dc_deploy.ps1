@@ -31,16 +31,14 @@ function New-Computer-Name{
     Write-Host ""
     Write-Host "Your current computer name is $env:computername"
     Write-Host ""
-    $new_comp_name = Read-Host "Please provide the new computer name and press enter: "
+    $new_comp_name = Read-Host "Please provide the new computer name and press enter"
 
     Rename-Computer -NewName $new_comp_name
     Write-Host ""
-    Write-Host "Your computer name has been changed to $env:computername"
+    Write-Host "Your computer name has been changed to $new_comp_name"
     Write-Host ""
-    Write-Host "You will have to restart your computer for the changes to take effect"
-    Write-Host ""
-    Write-Host "Press any key to create user..."
-    $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    Read-Host "Press any key to continue..."
+    exit
 }
 
 
@@ -60,19 +58,17 @@ function Create-NewUser {
     $job_title = Read-Host "Please enter $user_full_name's job title"
     Write-Host ""
 
-    Write-Host "Press any key to create user..."
-    $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    Read-Host "Press any key to create user..."
 
     New-ADUser -Name $full_name -SamAccountName $user_name -Accountpassword $password -Company $company_name  -Office $office_location -Department $dept_name -Title $job_title -Enabled $true
 
-    Write-Host "New user $user_name created! Press any key to verify..."
-    $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
+    Read-Host "New user $user_name created! Press any key to verify..."
+    
     # Verifies new user was created and prints formatted table with all eight properties to screen
 
     Get-ADUser -Filter "Name -eq '$user_name'" | Format-Table Name, SamAccountName, Created, Company, Office, Department, Title, Enabled
 
-    Write-Host "Press any key to continue..."
-    $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    Read-Host "Press any key to continue..."
+    exit
 }
 
