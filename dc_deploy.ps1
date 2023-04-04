@@ -77,6 +77,10 @@ function Create-NewUser {
 
     $full_name = Read-Host "Please enter new users full name (First Last)"
     $user_name = Read-Host "Please enter new users USERNAME"
+    Write-Host ""
+    Write-Host "Passwords must be no less than seven characters and must include at least three of the following four character classes:"
+    Write-Host "Uppercase letters (A-Z), Lowercase letters (a-z), Digits (0-9), Special characters (e.g., !@#$%^&*)"
+    Write-Host "" 
     $password = Read-Host -AsSecureString "Please enter $user_full_name's secure password"
     $company_name = Read-Host "Please enter the company name"
     $office_location = Read-Host "Please enter $user_full_name's office location"
