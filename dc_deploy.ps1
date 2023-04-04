@@ -94,9 +94,9 @@ function Create-NewUser {
 
     Read-Host "New user $user_name created! Press any key to verify..."
     
-    # Verifies new user was created and prints formatted table with all eight properties to screen
+    # Verifies new user was created and prints formatted table with all eight properties for all AD users to screen
 
-    Get-ADUser -Filter "Name -eq '$user_name'" | Format-Table Name, SamAccountName, Created, Company, Office, Department, Title, Enabled
+    Get-ADUser -Filter * -Properties * | Format-Table Name, SamAccountName, Created, Company, Office, Department, Title, Enabled
 
     Read-Host "Press any key to continue..."
     exit
